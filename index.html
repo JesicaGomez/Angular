@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--Control de angular ng-app-->
+<html ng-app>
+<head>
+	<title>Mi aplicacion angular</title>
+
+</head>
+<body>
+
+<!--en este div voy a inicializar angular creando un array con dos objetos -->
+<div ng-init="personas=[
+  {
+    nombre:'Jesica',
+    apellido: 'Gomez',
+    cuidad:'Medellin',
+    comentario:''},
+  {
+    nombre:'Alexa',
+    apellido: 'Murillo',
+    cuidad:'Bogota',
+    comentario:''}]">
+</div>
+<div>
+	<ul>
+	    <!--cada arrar se repite en un nuevo li -->
+		<li ng-repeat="persona in personas">
+			<h4>{{persona.nombre}} <b>{{persona.apellido}}</b>, Vive en {{persona.cuidad}}</h4>
+			<p>{{persona.nombre}} piensa que: {{persona.comentario}}</p>
+			<!--todo lo que escriba en el input se intera dentro de las llaves-->
+			<input type="text" ng-model="persona.comentario"> 
+		</li>
+	</ul>
+</div>
+
+<!--estoy llamando al archivo angular minimizado para generar una lectura mas rapida del codigo-->
+<script src="bower_components/angular/angular.min.js"></script>
+</body>
+</html>

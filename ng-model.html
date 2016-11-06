@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>Angular</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body>
+<!--todo lo que escriba en el input se intera dentro de las llaves-->
+<div ng-init="variable'valor'">
+	<h1>{{variable}}</h1>
+	<input type="text" ng-model="var_input">
+	<p>El valor del input es : {{var_input}}</p>
+</div>
+<br>
+
+<!--cada arrar se repite en un nuevo li -->
+<div ng-init="nombres=['Kevin','Jesica','Jholman']">
+	<p>Este es mi ng repeat</p>
+	<ul>
+		<li ng-repeat="nombre in nombres">
+		<p>El nombre dentro del array {{nombre}}</p>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
