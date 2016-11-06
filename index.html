@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!--Control de angular ng-app-->
-<html ng-app>
+<!--Luego voy a nombrar un modulo en mi aplicaciion: ng-app="NombredemimoduloApp" -->
+<html ng-app="ModuloApp">
 <head>
 	<title>Mi aplicacion angular</title>
 
@@ -20,7 +21,8 @@
     cuidad:'Bogota',
     comentario:''}]">
 </div>
-<div>
+<!--VOy a crear un controlador con el atributo: ng-controller="NombredemicontroladorController", para abreviar uso: ng-controller="NombredemicontroladorController as mController" -->
+<div ng-controller="mainController as mcontrol">
 	<ul>
 	    <!--cada arrar se repite en un nuevo li -->
 		<li ng-repeat="persona in personas">
@@ -31,8 +33,16 @@
 		</li>
 	</ul>
 </div>
-
-<!--estoy llamando al archivo angular minimizado para generar una lectura mas rapida del codigo-->
+<!--Llamo al archivo angular minimizado para generar una lectura mas rapida del codigo-->
 <script src="bower_components/angular/angular.min.js"></script>
+<script>
+    /*Incluyo el modulo MoudloApp en Js. Puedo crear tantos modulos como neccesite*/
+	var aplicacion = angular.modulo("ModuloApp");
+	/*Incluyo el controlador mControl en mi modulo asi: aplicacion.controller('Nombredemicontrolador',functionanonima(){})*/
+	aplicacion.controller('mControl', function(){
+
+	});
+
+</script>
 </body>
 </html>
