@@ -11,7 +11,7 @@
 	"license": "",
 	"homepage": "",
 	"ignore":[
-	"<!-- -->",
+	"<!--Abc-->",
 	"/**/.*",
 	"node_modules",
 	"bower_components",
