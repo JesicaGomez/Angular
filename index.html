@@ -1,48 +1,59 @@
 <!DOCTYPE html>
 <!--Control de angular ng-app-->
 <!--Luego voy a nombrar un modulo en mi aplicaciion: ng-app="NombredemimoduloApp" -->
-<html ng-app="ModuloApp">
+<html lang="en" ng-app="ModuloApp">
 <head>
 	<title>Mi aplicacion angular</title>
-
 </head>
 <body>
-
-<!--en este div voy a inicializar angular creando un array con dos objetos -->
-<div ng-init="personas=[
-  {
-    nombre:'Jesica',
-    apellido: 'Gomez',
-    cuidad:'Medellin',
-    comentario:''},
-  {
-    nombre:'Alexa',
-    apellido: 'Murillo',
-    cuidad:'Bogota',
-    comentario:''}]">
+<!--Voy a crear un controlador con el atributo: ng-controller="NombredemicontroladorController", para abreviar uso: ng-controller="NombredemicontroladorController as mController" -->
+<div class="container">
+	<div class="row" ng-controller="mainController as mControl">
+		<ul class="media-list" >
+			<!--voy a llamar a mi controlador y lo voy a iterar en un li, uso el alias y específico qué voy a utilizar de mi controller-->
+			<li class="media" ng-repeat="persona in mControl.personas">
+				<div class="media-left">
+					<a href="">
+						<!--voy utilizar el att ng-src dentro de img para traer archivos específicos de cada objeto-->
+						<img class="media-object" ng-src={{persona.img}} alt="Generic image">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4>{{persona.nombre}} <b>{{persona.apellido}}</b>, Vive en {{persona.cuidad}}</h4>
+					<p>{{persona.nombre}} piensa que: {{persona.comentario}}</p>
+					<!--todo lo que escriba en el input se intera dentro de las llaves-->
+					<input type="text" ng-model='persona.comentario'> 
+					<p>{{persona.precio|currency}}</p>
+				</div>
+			</li>
+		</ul>
+	</div>
 </div>
-<!--VOy a crear un controlador con el atributo: ng-controller="NombredemicontroladorController", para abreviar uso: ng-controller="NombredemicontroladorController as mController" -->
-<div ng-controller="mainController as mcontrol">
-	<ul>
-	    <!--cada arrar se repite en un nuevo li -->
-		<li ng-repeat="persona in personas">
-			<h4>{{persona.nombre}} <b>{{persona.apellido}}</b>, Vive en {{persona.cuidad}}</h4>
-			<p>{{persona.nombre}} piensa que: {{persona.comentario}}</p>
-			<!--todo lo que escriba en el input se intera dentro de las llaves-->
-			<input type="text" ng-model="persona.comentario"> 
-		</li>
-	</ul>
-</div>
+<script>
+    /*Incluyo el modulo ModuloApp en Js. Puedo crear tantos modulos como neccesite Importate crear el array asi sea vacio*/
+	var aplicacion = angular.modulo("ModuloApp", []);
+	/*Incluyo el controlador mControl en mi modulo asi: aplicacion.controller('Nombredemicontrolador',functionanonima(){})*/
+	aplicacion.controller('mainController', function(){
+		var personas=[
+    {
+       nombre:'Jesica',
+       apellido: 'Gomez',
+       cuidad:'Medellin',
+       img:'img/al6.png',
+       precio: '4',
+       comentario:''},
+    {
+       nombre:'Alexa',
+       apellido: 'Murillo',
+       cuidad:'Bogota',
+       img:'img/flower.png',
+       precio: '3',
+       comentario:''}];
+       /*Le digo que mControl es igual a personas*/
+       this.personas = personas;
+	});
+</script>
 <!--Llamo al archivo angular minimizado para generar una lectura mas rapida del codigo-->
 <script src="bower_components/angular/angular.min.js"></script>
-<script>
-    /*Incluyo el modulo MoudloApp en Js. Puedo crear tantos modulos como neccesite*/
-	var aplicacion = angular.modulo("ModuloApp");
-	/*Incluyo el controlador mControl en mi modulo asi: aplicacion.controller('Nombredemicontrolador',functionanonima(){})*/
-	aplicacion.controller('mControl', function(){
-
-	});
-
-</script>
 </body>
 </html>

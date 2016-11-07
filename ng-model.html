@@ -1,27 +1,39 @@
 <!DOCTYPE html>
+<!--Control de angular ng-app-->
 <html ng-app>
 <head>
-	<title>Angular</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
+	<title>Mi aplicacion angular</title>
 </head>
 <body>
-<!--todo lo que escriba en el input se intera dentro de las llaves-->
-<div ng-init="variable'valor'">
-	<h1>{{variable}}</h1>
-	<input type="text" ng-model="var_input">
-	<p>El valor del input es : {{var_input}}</p>
+<!--en este div voy a inicializar angular creando un array con dos objetos -->
+<div ng-init="personas=[
+  {
+    nombre:'Jesica',
+    apellido: 'Gomez',
+    cuidad:'Medellin',
+    img:'img/flower.png',
+    comentario:''},
+  {
+    nombre:'Alexa',
+    apellido: 'Murillo',
+    cuidad:'Bogota',
+    img:'img/al6.png',
+    comentario:''}]">
 </div>
-<br>
-
-<!--cada arrar se repite en un nuevo li -->
-<div ng-init="nombres=['Kevin','Jesica','Jholman']">
-	<p>Este es mi ng repeat</p>
+<div>
 	<ul>
-		<li ng-repeat="nombre in nombres">
-		<p>El nombre dentro del array {{nombre}}</p>
+	    <!--cada arrar se repite en un nuevo li -->
+		<li ng-repeat="persona in personas">
+		    <img ng-src={{persona.img}} alt="Generic image">
+			<h4>{{persona.nombre}} <b>{{persona.apellido}}</b>, Vive en {{persona.cuidad}}</h4>
+			<p>{{persona.nombre}} piensa que: {{persona.comentario}}</p>
+			<!--todo lo que escriba en el input se intera dentro de las llaves-->
+			<input type="text" ng-model="persona.comentario"> 
 		</li>
 	</ul>
 </div>
+<!--Llamo al archivo angular minimizado para generar una lectura mas rapida del codigo-->
+<script src="bower_components/angular/angular.min.js"></script>
+
 </body>
 </html>
